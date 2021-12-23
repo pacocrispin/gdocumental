@@ -14,7 +14,7 @@ class CreateTrabajadoresTable extends Migration
     public function up()
     {
         Schema::create('trabajadores', function (Blueprint $table) {
-           // $table->id();
+            $table->id();
            // $table->string('codigo');
            // $table->string('cedula');
            // $table->string('nombre');
@@ -24,7 +24,7 @@ class CreateTrabajadoresTable extends Migration
             //$table->string('foto');
             //$table->foreign('departamento_id')->references('id')->on('departamentos');
             //$table->foreign('cargo_id')->references('id')->on('cargos');
-            //$table->timestamps();
+             $table->timestamps();
         });
     }
 
