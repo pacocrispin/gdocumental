@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tipo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
-use Spatie\Permission\Models\Permission;
 
-class PermissionController extends Controller
+class TipoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +15,10 @@ class PermissionController extends Controller
      */
     public function index()
     {
-        abort_if(Gate::denies('permission_index'), 403);
-        $permissions = Permission::paginate(10);
+        abort_if(Gate::denies('tipo_index'), 403);
 
-        return view('permissions.index', compact('permissions'));
+        $tipos = Tipo::paginate(5);
+        return view('tipos.index', compact('tipos'));
     }
 
     /**
@@ -28,8 +28,9 @@ class PermissionController extends Controller
      */
     public function create()
     {
-        abort_if(Gate::denies('permission_create'), 403);
-        return view('permissions.create');
+        abort_if(Gate::denies('tipo_create'), 403);
+
+        return view('tipos.create')->with('success', 'Tipo de Documento creado correctamente');
     }
 
     /**
@@ -40,9 +41,9 @@ class PermissionController extends Controller
      */
     public function store(Request $request)
     {
-        Permission::create($request->only('name'));
+        Tipo::create($request->only('descripcion'));
 
-        return redirect()->route('permissions.index');
+        return redirect()->route('tipos.index');
     }
 
     /**
@@ -51,10 +52,11 @@ class PermissionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Permission $permission)
+    public function show(Tipo $tipo)
     {
-        abort_if(Gate::denies('permission_show'), 403);
-        return view('permissions.show', compact('permission'));
+        abort_if(Gate::denies('tipo_show'), 403);
+
+        return view('tipos.show', compact('tipo'));
     }
 
     /**
@@ -63,10 +65,11 @@ class PermissionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Permission $permission)
+    public function edit(Tipo $tipo)
     {
-        abort_if(Gate::denies('permission_edit'), 403);
-        return view('permissions.edit', compact('permission'));
+        abort_if(Gate::denies('tipo_edit'), 403);
+
+        return view('tipos.edit', compact('tipo'));
     }
 
     /**
@@ -76,11 +79,11 @@ class PermissionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Permission $permission)
+    public function update(Request $request, Tipo $tipo)
     {
-        $permission->update($request->only('name'));
+        $tipo->update($request->all());
 
-        return redirect()->route('permissions.index');
+        return redirect()->route('tipos.index')->with('success', 'Tipo de Documento actualizado correctamente');
     }
 
     /**
@@ -89,11 +92,12 @@ class PermissionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Permission $permission)
+    public function destroy(Tipo $tipo)
     {
-        abort_if(Gate::denies('permission_delete'), 403);
-        $permission->delete();
+        abort_if(Gate::denies('tipo_destroy'), 403);
 
-        return redirect()->route('permissions.index');
+        $tipo->delete();
+
+        return redirect()->route('tipos.index');
     }
 }

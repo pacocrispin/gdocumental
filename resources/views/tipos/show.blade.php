@@ -1,4 +1,4 @@
-@extends('layouts.main', ['activePage' => 'users', 'titlePage' => 'Detalles del Usuario'])
+@extends('layouts.main', ['activePage' => 'tipos', 'titlePage' => 'Detalles del Tipo de Documento'])
 @section('content')
     <div class="content">
         <div class="container-fluid">
@@ -6,8 +6,8 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header card-header-primary">
-                            <div class="card-title">Usuarios</div>
-                            <p class="card-category">Vista detallada del Usuario: {{ $user->name }}</p>
+                            <div class="card-title">Tipo de Documento</div>
+                            <p class="card-category">Vista detallada del Tipo de Documento: {{ $tipo->id }}</p>
                         </div>
                         <!--body-->
                         <div class="card-body">
@@ -24,19 +24,11 @@
                                                 <div class="author">
                                                     <a href="#" class="d-flex">
                                                         <img src="{{ asset('/img/default-avatar.png') }}" alt="image" class="avatar">
-                                                        <h5 class="title mx-3">{{ $user->name }}</h5>
+                                                        <h5 class="title mx-3">{{ $tipo->id }}</h5>
                                                     </a>
                                                     <p class="description">
-                                                        {{ $user->username }} <br>
-                                                        {{ $user->email }} <br>
-                                                        {{ $user->created_at }} <br>
-                                                        <td>
-                                                          @forelse ($user->roles as $role)
-                                                            <span class="badge rounded-pill bg-dark text-white">{{ $role->name }}</span>
-                                                          @empty
-                                                            <span class="badge badge-danger bg-danger">Sin roles</span>
-                                                          @endforelse
-                                                        </td>
+                                                        {{ $tipo->descripcion }} <br>
+                                                        {{ $tipo->created_at }} <br>
                                                     </p>
                                                 </div>
                                             </p>
@@ -46,8 +38,8 @@
                                         </div>
                                         <div class="card-footer">
                                             <div class="button-container">
-                                                <a href="{{ route('users.index') }}" class="btn btn-sm btn-success mr-3">Volver</a>
-                                                <button class="btn btn-sm btn-primary">Editar</button>
+                                                <a href="{{ route('tipos.index') }}" class="btn btn-sm btn-success mr-3">Volver</a>
+                                                <a href="#" class="btn btn-sm btn-primary">Editar</a>
                                             </div>
                                         </div>
                                     </div>

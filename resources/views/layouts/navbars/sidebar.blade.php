@@ -41,42 +41,54 @@
           </ul>
         </div>
       </li>
+      @can('user_index')
       <li class="nav-item{{ $activePage == 'users' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('users.index')}}">
+        <a class="nav-link" href="{{ route('users.index') }}">
           <i class="material-icons">content_paste</i>
             <p>{{ __('Usuarios') }}</p>
         </a>
       </li>
-      <li class="nav-item{{ $activePage == 'typography' ? ' active' : '' }}">
-        <a class="nav-link" href="#">
+      @endcan
+      @can('role_index')
+      <li class="nav-item{{ $activePage == 'roles' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('roles.index') }}">
           <i class="material-icons">library_books</i>
-            <p>{{ __('Typography') }}</p>
+            <p>{{ __('Roles') }}</p>
         </a>
       </li>
+      @endcan
+      @can('permission_index')
       <li class="nav-item{{ $activePage == 'permissions' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('permissions.index') }}">
           <i class="material-icons">bubble_chart</i>
           <p>{{ __('Permisos') }}</p>
         </a>
       </li>
-      <li class="nav-item{{ $activePage == 'map' ? ' active' : '' }}">
-        <a class="nav-link" href="#">
+      @endcan
+      @can('cargo_index')
+      <li class="nav-item{{ $activePage == 'cargos' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('cargos.index') }}">
           <i class="material-icons">location_ons</i>
-            <p>{{ __('Maps') }}</p>
+            <p>{{ __('Cargos') }}</p>
         </a>
       </li>
-      <li class="nav-item{{ $activePage == 'notifications' ? ' active' : '' }}">
-        <a class="nav-link" href="#">
+      @endcan
+      @can('departamento_index')
+      <li class="nav-item{{ $activePage == 'departamentos' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('departamentos.index') }}">
           <i class="material-icons">notifications</i>
-          <p>{{ __('Notifications') }}</p>
+          <p>{{ __('Departamento') }}</p>
         </a>
       </li>
-      <li class="nav-item{{ $activePage == 'language' ? ' active' : '' }}">
-        <a class="nav-link" href="#">
+      @endcan
+      @can('tipo_index')
+      <li class="nav-item{{ $activePage == 'tipos' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('tipos.index') }}">
           <i class="material-icons">language</i>
-          <p>{{ __('RTL Support') }}</p>
+          <p>{{ __('Tipo de Documento') }}</p>
         </a>
       </li>
+      @endcan
     </ul>
   </div>
 </div>

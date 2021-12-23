@@ -29,5 +29,9 @@ Route::put('/users/{user}', [App\Http\Controllers\UserController::class, 'update
 Route::delete('/users/{user}', [App\Http\Controllers\UserController::class, 'destroy'])->name('users.delete');
 
 Route::resource('permissions', App\Http\Controllers\PermissionController::class);
+Route::resource('roles', App\Http\Controllers\RoleController::class);
+Route::resource('cargos', App\Http\Controllers\CargoController::class);
+Route::resource('departamentos', App\Http\Controllers\DepartamentoController::class);
+Route::resource('tipos', App\Http\Controllers\TipoController::class);
 
 });
