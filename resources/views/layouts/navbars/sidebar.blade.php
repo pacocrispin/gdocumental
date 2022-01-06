@@ -5,9 +5,12 @@
       Tip 2: you can also add an image using data-image tag
   -->
   <div class="logo">
-    <a href="https://creative-tim.com/" class="simple-text logo-normal">
-      {{ __('Creative Tim') }}
-    </a>
+    <div class="row justify-content-center">
+      <img src="{{ asset('gDocumental.svg') }}" alt="logo" width="50px">
+      <a href="/" class="simple-text logo-normal">
+        Gestión Documental
+      </a>
+    </div>
   </div>
   <div class="sidebar-wrapper">
     <ul class="nav">
