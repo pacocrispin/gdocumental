@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']);
+Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index'])->name('bitacora');
 
 Route::group(['middleware' => 'auth'], function() {
 Route::get('/users/create', [App\Http\Controllers\UserController::class, 'create'])->name('users.create');

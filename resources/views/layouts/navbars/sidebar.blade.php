@@ -92,6 +92,12 @@
         </a>
       </li>
       @endcan
+      <li class="nav-item">
+        <a class="nav-link" href="{{ route('bitacora') }}">
+          <i class="material-icons">list_alt</i>
+          <p>{{ __('Bitácora') }}</p>
+        </a>
+      </li>
     </ul>
   </div>
 </div>
