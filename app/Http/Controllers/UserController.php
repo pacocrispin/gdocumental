@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
@@ -40,6 +41,11 @@ class UserController extends Controller
 
         $roles = $request->input('roles', []);
         $user->syncRoles($roles);
+
+        $mensaje = $user; 
+        $ip = request()->server();
+        $datauser =auth()->user();
+        Log::info( 'IP DEL CLIENTE:'. $ip['REMOTE_ADDR'] . ' CLIENTE: '. $datauser->name . ' DESDE NAVEGADOR:'.$ip['HTTP_USER_AGENT'] . ' DESCRIPCIÓN: Usuario creado: con id ' .$mensaje->id . ' ' . $mensaje->name );
         return redirect()->route('users.show',$user->id)->with('success', 'Usuario creado correctamente');
     }
 
@@ -85,7 +91,11 @@ class UserController extends Controller
         if (auth()->user()->id == $user->id) {
             return redirect()->route('users.index');
         }
-
+        
+        $mensaje = $user;
+        $ip = request()->server();
+        $datauser =auth()->user();
+        Log::info( 'IP DEL CLIENTE:'. $ip['REMOTE_ADDR'] . ' CLIENTE: '. $datauser->name . ' DESDE NAVEGADOR:'.$ip['HTTP_USER_AGENT'] . ' DESCRIPCIÓN: Usuario eliminado con id ' .$mensaje->id . ' ' . $mensaje->name );
         $user->delete();
         return back()->with('success', 'Usuario eliminado correctamente');
     }
