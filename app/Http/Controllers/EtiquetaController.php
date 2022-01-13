@@ -6,6 +6,7 @@ use App\Models\Etiqueta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Log;
 
 class EtiquetaController extends Controller
 {
@@ -45,6 +46,11 @@ class EtiquetaController extends Controller
     {
         Etiqueta::create($request->all());
 
+        $mensaje = $request; 
+        $ip = request()->server();
+        $datauser =auth()->user();
+        Log::info( 'IP DEL CLIENTE:'. $ip['REMOTE_ADDR'] . ' CLIENTE: '. $datauser->name . ' DESDE NAVEGADOR:'.$ip['HTTP_USER_AGENT'] . ' DESCRIPCIÓN: Etiqueta creada: con descripción ->' .$mensaje->descripcion  );
+        
         return redirect()->route('etiquetas.index');
     }
 
@@ -99,8 +105,12 @@ class EtiquetaController extends Controller
     {
         abort_if(Gate::denies('etiqueta_destroy'), 403);
 
+        $mensaje = $etiqueta; 
+        $ip = request()->server();
+        $datauser =auth()->user();
+        Log::info( 'IP DEL CLIENTE:'. $ip['REMOTE_ADDR'] . ' CLIENTE: '. $datauser->name . ' DESDE NAVEGADOR:'.$ip['HTTP_USER_AGENT'] . ' DESCRIPCIÓN: Etiqueta eliminada: con id ' .$mensaje->id . ' ' . $mensaje->descripcion  );
+        
         $etiqueta->delete();
-
         return redirect()->route('etiquetas.index');
     }
 }

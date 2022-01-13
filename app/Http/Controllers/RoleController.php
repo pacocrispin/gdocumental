@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Log;
 
 class RoleController extends Controller
 {
@@ -48,6 +49,11 @@ class RoleController extends Controller
         // $role->permissions()->sync($request->input('permissions', []));
         $role->syncPermissions($request->input('permissions', []));
 
+        $mensaje = $request; 
+        $ip = request()->server();
+        $datauser =auth()->user();
+        Log::info( 'IP DEL CLIENTE:'. $ip['REMOTE_ADDR'] . ' CLIENTE: '. $datauser->name . ' DESDE NAVEGADOR:'.$ip['HTTP_USER_AGENT'] . ' DESCRIPCIÓN: Rol creado: con nombre ' .$mensaje->name  );
+        
         return redirect()->route('roles.index');
     }
 
@@ -105,8 +111,13 @@ class RoleController extends Controller
     public function destroy(Role $role)
     {
         abort_if(Gate::denies('role_delete'), 403);
+        
+        $mensaje = $role; 
+        $ip = request()->server();
+        $datauser =auth()->user();
+        Log::info( 'IP DEL CLIENTE:'. $ip['REMOTE_ADDR'] . ' CLIENTE: '. $datauser->name . ' DESDE NAVEGADOR:'.$ip['HTTP_USER_AGENT'] . ' DESCRIPCIÓN: Rol eliminado: con id ' .$mensaje->id . ' ' . $mensaje->name );
+        
         $role->delete();
-
         return redirect()->route('roles.index');
     }
 }

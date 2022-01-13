@@ -71,7 +71,7 @@ class UserController extends Controller
         $data = $request->only('name', 'username', 'email');
         $password = $request->input('password');
         if($password)
-           $data['password'] = bcrypt($password);
+            $data['password'] = bcrypt($password);
         //if(trim($request->password)=='')
         //{
         //    $data=$request->except('password');

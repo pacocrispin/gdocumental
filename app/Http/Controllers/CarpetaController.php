@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Log;
 
 class CarpetaController extends Controller
 {
@@ -20,7 +21,7 @@ class CarpetaController extends Controller
         $carpetas = DB::table('carpetas')
         ->join('users', 'users.id', '=', 'creado_por_id')
         ->select('carpetas.*',
-                 'users.name as usuario',
+                'users.name as usuario',
                 )
         ->orderBy('id')
         ->paginate(5);
@@ -50,6 +51,11 @@ class CarpetaController extends Controller
         $request->merge(['creado_por_id'=>$creado_por_id]);
         Carpeta::create($request->all());
 
+        $mensaje = $request; 
+        $ip = request()->server();
+        $datauser =auth()->user();
+        Log::info( 'IP DEL CLIENTE:'. $ip['REMOTE_ADDR'] . ' CLIENTE: '. $datauser->name . ' DESDE NAVEGADOR:'.$ip['HTTP_USER_AGENT'] . ' DESCRIPCIÓN: Carpeta creada: con nombre ' . $mensaje->nombre );
+        
         return redirect()->route('carpetas.index');
     }
 
@@ -73,6 +79,11 @@ class CarpetaController extends Controller
     {
         $carpeta->update($request->all());
 
+        $mensaje = $carpeta; 
+        $ip = request()->server();
+        $datauser =auth()->user();
+        Log::info( 'IP DEL CLIENTE:'. $ip['REMOTE_ADDR'] . ' CLIENTE: '. $datauser->name . ' DESDE NAVEGADOR:'.$ip['HTTP_USER_AGENT'] . ' DESCRIPCIÓN: Carpeta actulizada: con id ' .$mensaje->id . ' ' . $mensaje->nombre );
+        
         return redirect()->route('carpetas.index')->with('success', 'Carpeta actualizada correctamente');
     }
 
@@ -81,8 +92,12 @@ class CarpetaController extends Controller
     {
         abort_if(Gate::denies('carpeta_destroy'), 403);
 
+        $mensaje = $carpeta;
+        $ip = request()->server();
+        $datauser =auth()->user();
+        Log::info( 'IP DEL CLIENTE:'. $ip['REMOTE_ADDR'] . ' CLIENTE: '. $datauser->name . ' DESDE NAVEGADOR:'.$ip['HTTP_USER_AGENT'] . ' DESCRIPCIÓN: Carpeta eliminada con id ' .$mensaje->id . ' ' . $mensaje->nombre );
+        
         $carpeta->delete();
-
         return redirect()->route('carpetas.index');
     }
 }

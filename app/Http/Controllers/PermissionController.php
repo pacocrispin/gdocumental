@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Spatie\Permission\Models\Permission;
+use Illuminate\Support\Facades\Log;
 
 class PermissionController extends Controller
 {
@@ -42,6 +43,11 @@ class PermissionController extends Controller
     {
         Permission::create($request->only('name'));
 
+        $mensaje = $request; 
+        $ip = request()->server();
+        $datauser =auth()->user();
+        Log::info( 'IP DEL CLIENTE:'. $ip['REMOTE_ADDR'] . ' CLIENTE: '. $datauser->name . ' DESDE NAVEGADOR:'.$ip['HTTP_USER_AGENT'] . ' DESCRIPCIÓN: Permiso añadido/creado: con nombre ' .$mensaje->name );
+        
         return redirect()->route('permissions.index');
     }
 
@@ -92,8 +98,13 @@ class PermissionController extends Controller
     public function destroy(Permission $permission)
     {
         abort_if(Gate::denies('permission_delete'), 403);
+        
+        $mensaje = $permission; 
+        $ip = request()->server();
+        $datauser =auth()->user();
+        Log::info( 'IP DEL CLIENTE:'. $ip['REMOTE_ADDR'] . ' CLIENTE: '. $datauser->name . ' DESDE NAVEGADOR:'.$ip['HTTP_USER_AGENT'] . ' DESCRIPCIÓN: Permiso eliminado: con id ' .$mensaje->id . ' ' . $mensaje->name );
+        
         $permission->delete();
-
         return redirect()->route('permissions.index');
     }
 }

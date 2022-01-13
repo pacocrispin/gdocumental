@@ -6,6 +6,7 @@ use App\Http\Requests\CargoCreateRequest;
 use App\Models\Cargo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Log;
 
 class CargoController extends Controller
 {
@@ -27,6 +28,12 @@ class CargoController extends Controller
     public function store(Request $request)
     {
         Cargo::create($request->all());
+
+        $mensaje = $request;
+        $ip = request()->server();
+        $datauser =auth()->user();
+        Log::info( 'IP DEL CLIENTE:'. $ip['REMOTE_ADDR'] . ' CLIENTE: '. $datauser->name . ' DESDE NAVEGADOR:'.$ip['HTTP_USER_AGENT'] . ' DESCRIPCIÓN: Cargo creado: ' . $mensaje->codigo . ' ' . $mensaje->nombre );
+        
 
         return redirect()->route('cargos.index');
     }
@@ -56,8 +63,12 @@ class CargoController extends Controller
     {
         abort_if(Gate::denies('cargo_destroy'), 403);
 
+        $mensaje = $cargo;
+        $ip = request()->server();
+        $datauser =auth()->user();
+        Log::info( 'IP DEL CLIENTE:'. $ip['REMOTE_ADDR'] . ' CLIENTE: '. $datauser->name . ' DESDE NAVEGADOR:'.$ip['HTTP_USER_AGENT'] . ' DESCRIPCIÓN: Cargo eliminado con id ' .$mensaje->id . ' ' . $mensaje->codigo . ' ' . $mensaje->name );
+        
         $cargo->delete();
-
         return redirect()->route('cargos.index');
     }
 }

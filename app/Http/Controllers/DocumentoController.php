@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Str;
 use Spatie\MediaLibrary\HasMedia;
+use Illuminate\Support\Facades\Log;
 
 class DocumentoController extends Controller
 {
@@ -84,6 +85,10 @@ class DocumentoController extends Controller
             ]);
         }
 
+        $mensaje = $request; 
+        $ip = request()->server();
+        $datauser =auth()->user();
+        Log::info( 'IP DEL CLIENTE:'. $ip['REMOTE_ADDR'] . ' CLIENTE: '. $datauser->name . ' DESDE NAVEGADOR:'.$ip['HTTP_USER_AGENT'] . ' DESCRIPCIÓN: Documento creado: con nombre ' .$mensaje->nombre . ' ' . $mensaje->numero );
         
         return redirect()->route('documentos.index');
         
@@ -130,6 +135,11 @@ class DocumentoController extends Controller
     {
         $documento->update($request->all());
 
+        $mensaje = $documento; 
+        $ip = request()->server();
+        $datauser =auth()->user();
+        Log::info( 'IP DEL CLIENTE:'. $ip['REMOTE_ADDR'] . ' CLIENTE: '. $datauser->name . ' DESDE NAVEGADOR:'.$ip['HTTP_USER_AGENT'] . ' DESCRIPCIÓN: Documento actualizado: con id ' .$mensaje->id . ' '  .$mensaje->nombre . ' ' . $mensaje->numero );
+        
         return redirect()->route('documentos.index')->with('success', 'Documento actualizado correctamente');
     }
 
@@ -143,8 +153,12 @@ class DocumentoController extends Controller
     {
         abort_if(Gate::denies('documento_destroy'), 403);
 
+        $mensaje = $documento; 
+        $ip = request()->server();
+        $datauser =auth()->user();
+        Log::info( 'IP DEL CLIENTE:'. $ip['REMOTE_ADDR'] . ' CLIENTE: '. $datauser->name . ' DESDE NAVEGADOR:'.$ip['HTTP_USER_AGENT'] . ' DESCRIPCIÓN: Documento eliminado: con id ' .$mensaje->id . ' ' .$mensaje->nombre . ' ' . $mensaje->numero );
+        
         $documento->delete();
-
         return redirect()->route('documentos.index')->with('success', 'Documento eliminado correctamente');
     }
 
