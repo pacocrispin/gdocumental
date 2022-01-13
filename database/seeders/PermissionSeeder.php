@@ -65,6 +65,30 @@ class PermissionSeeder extends Seeder
             'paciente_show',
             'paciente_edit',
             'paciente_destroy',
+
+            'carpeta_index',
+            'carpeta_create',
+            'carpeta_show',
+            'carpeta_edit',
+            'carpeta_destroy',
+
+            'documento_index',
+            'documento_create',
+            'documento_show',
+            'documento_edit',
+            'documento_destroy',
+
+            'etiqueta_index',
+            'etiqueta_create',
+            'etiqueta_show',
+            'etiqueta_edit',
+            'etiqueta_destroy',
+
+            'explorador_index',
+            'explorador_create',
+            'explorador_show',
+            'explorador_edit',
+            'explorador_destroy',
         ];
 
         foreach ($permissions as $permission) {

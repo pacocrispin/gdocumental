@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Tipo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Log;
 
 class TipoController extends Controller
 {
@@ -43,6 +44,11 @@ class TipoController extends Controller
     {
         Tipo::create($request->only('descripcion'));
 
+        $mensaje = $request; 
+        $ip = request()->server();
+        $datauser =auth()->user();
+        Log::info( 'IP DEL CLIENTE:'. $ip['REMOTE_ADDR'] . ' CLIENTE: '. $datauser->name . ' DESDE NAVEGADOR:'.$ip['HTTP_USER_AGENT'] . ' DESCRIPCIÓN: Tipo de documento creado: con descripción ' .$mensaje->descripcion  );
+        
         return redirect()->route('tipos.index');
     }
 
@@ -96,8 +102,12 @@ class TipoController extends Controller
     {
         abort_if(Gate::denies('tipo_destroy'), 403);
 
+        $mensaje = $tipo; 
+        $ip = request()->server();
+        $datauser =auth()->user();
+        Log::info( 'IP DEL CLIENTE:'. $ip['REMOTE_ADDR'] . ' CLIENTE: '. $datauser->name . ' DESDE NAVEGADOR:'.$ip['HTTP_USER_AGENT'] . ' DESCRIPCIÓN: Tipo de documento eliminado: con id ' .$mensaje->id . ' ' . $mensaje->descripcion );
+        
         $tipo->delete();
-
         return redirect()->route('tipos.index');
     }
 }

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Aviso;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AvisoController extends Controller
 {
@@ -34,7 +36,9 @@ class AvisoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $data['user_id'] = Auth::id();
+        $aviso = Aviso::create($data);
     }
 
     /**

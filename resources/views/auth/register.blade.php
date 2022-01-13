@@ -11,13 +11,13 @@
           <div class="card-header card-header-primary text-center">
             <h4 class="card-title"><strong>{{ __('Registrate') }}</strong></h4>
             <div class="social-line">
-              <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
+              <a href="#" class="btn btn-just-icon btn-link btn-white">
                 <i class="fa fa-facebook-square"></i>
               </a>
-              <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
+              <a href="#" class="btn btn-just-icon btn-link btn-white">
                 <i class="fa fa-twitter"></i>
               </a>
-              <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
+              <a href="#" class="btn btn-just-icon btn-link btn-white">
                 <i class="fa fa-google-plus"></i>
               </a>
             </div>
@@ -31,7 +31,7 @@
                       <i class="material-icons">face</i>
                   </span>
                 </div>
-                <input type="text" name="name" class="form-control" placeholder="{{ __('Nombre...') }}" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                <input type="text" name="name" class="form-control" placeholder="{{ __('Nombre Completo...') }}" value="{{ old('name') }}" required autocomplete="name" autofocus>
               </div>
               @if ($errors->has('name'))
                 <div id="name-error" class="error text-danger pl-3" for="name" style="display: block;">

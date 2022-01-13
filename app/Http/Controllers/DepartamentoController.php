@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Departamento;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Log;
 
 class DepartamentoController extends Controller
 {
@@ -43,6 +44,11 @@ class DepartamentoController extends Controller
     {
         Departamento::create($request->all());
 
+        $mensaje = $request; 
+        $ip = request()->server();
+        $datauser =auth()->user();
+        Log::info( 'IP DEL CLIENTE:'. $ip['REMOTE_ADDR'] . ' CLIENTE: '. $datauser->name . ' DESDE NAVEGADOR:'.$ip['HTTP_USER_AGENT'] . ' DESCRIPCIÓN: Departamento creado: con código' .$mensaje->codigo . ' ' . $mensaje->nombre );
+        
         return redirect()->route('departamentos.index');
     }
 
@@ -96,8 +102,12 @@ class DepartamentoController extends Controller
     {
         abort_if(Gate::denies('departamento_destroy'), 403);
 
+        $mensaje = $departamento; 
+        $ip = request()->server();
+        $datauser =auth()->user();
+        Log::info( 'IP DEL CLIENTE:'. $ip['REMOTE_ADDR'] . ' CLIENTE: '. $datauser->name . ' DESDE NAVEGADOR:'.$ip['HTTP_USER_AGENT'] . ' DESCRIPCIÓN: Departamento eliminado: con id' .$mensaje->id . ' ' . $mensaje->codigo . ' ' . $mensaje->nombre );
+        
         $departamento->delete();
-
         return redirect()->route('departamentos.index');
     }
 }
