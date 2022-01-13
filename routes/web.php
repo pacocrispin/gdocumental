@@ -35,4 +35,11 @@ Route::resource('cargos', App\Http\Controllers\CargoController::class);
 Route::resource('departamentos', App\Http\Controllers\DepartamentoController::class);
 Route::resource('tipos', App\Http\Controllers\TipoController::class);
 
+Route::resource('carpetas', App\Http\Controllers\CarpetaController::class);
+Route::resource('documentos', App\Http\Controllers\DocumentoController::class);
+Route::resource('etiquetas', App\Http\Controllers\EtiquetaController::class);
+Route::resource('explorador', App\Http\Controllers\ExploradorController::class);
+Route::post('/documentos/upload', [App\Http\Controllers\DocumentoController::class, 'upload'])->name('documentos.upload');
+Route::get('/{uuid}/download', 'App\Http\Controllers\DownloadMediaController@download'); 
+
 });

@@ -20,30 +20,7 @@
             <p>{{ __('Dashboard') }}</p>
         </a>
       </li>
-      <li class="nav-item {{ ($activePage == 'profile' || $activePage == 'user-management') ? ' active' : '' }}">
-        <a class="nav-link" data-toggle="collapse" href="#laravelExample" aria-expanded="true">
-          <i><img style="width:25px" src="{{ asset('img/laravel.svg') }}"></i>
-          <p>{{ __('Laravel Examples') }}
-            <b class="caret"></b>
-          </p>
-        </a>
-        <div class="collapse show" id="laravelExample">
-          <ul class="nav">
-            <li class="nav-item{{ $activePage == 'profile' ? ' active' : '' }}">
-              <a class="nav-link" href="#">
-                <span class="sidebar-mini"> UP </span>
-                <span class="sidebar-normal">{{ __('User profile') }} </span>
-              </a>
-            </li>
-            <li class="nav-item{{ $activePage == 'user-management' ? ' active' : '' }}">
-              <a class="nav-link" href="#">
-                <span class="sidebar-mini"> UM </span>
-                <span class="sidebar-normal"> {{ __('User Management') }} </span>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </li>
+      
       @can('user_index')
       <li class="nav-item{{ $activePage == 'users' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('users.index') }}">
@@ -63,7 +40,7 @@
       @can('permission_index')
       <li class="nav-item{{ $activePage == 'permissions' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('permissions.index') }}">
-          <i class="material-icons">bubble_chart</i>
+          <i class="material-icons">rule</i>
           <p>{{ __('Permisos') }}</p>
         </a>
       </li>
@@ -71,7 +48,7 @@
       @can('cargo_index')
       <li class="nav-item{{ $activePage == 'cargos' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('cargos.index') }}">
-          <i class="material-icons">location_ons</i>
+          <i class="material-icons">assignment_turned_in</i>
             <p>{{ __('Cargos') }}</p>
         </a>
       </li>
@@ -79,7 +56,7 @@
       @can('departamento_index')
       <li class="nav-item{{ $activePage == 'departamentos' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('departamentos.index') }}">
-          <i class="material-icons">notifications</i>
+          <i class="material-icons">apartment</i>
           <p>{{ __('Departamento') }}</p>
         </a>
       </li>
@@ -87,17 +64,70 @@
       @can('tipo_index')
       <li class="nav-item{{ $activePage == 'tipos' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('tipos.index') }}">
-          <i class="material-icons">language</i>
+          <i class="material-icons">history_edu</i>
           <p>{{ __('Tipo de Documento') }}</p>
         </a>
       </li>
       @endcan
-      <li class="nav-item">
-        <a class="nav-link" href="{{ route('bitacora') }}">
-          <i class="material-icons">list_alt</i>
-          <p>{{ __('Bitácora') }}</p>
+      @can('carpeta_index')
+      <li class="nav-item{{ $activePage == 'carpetas' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('carpetas.index') }}">
+          <i class="material-icons">folder</i>
+            <p>{{ __('Carpetas') }}</p>
         </a>
       </li>
+      @endcan
+      @can('etiqueta_index')
+      <li class="nav-item{{ $activePage == 'etiquetas' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('etiquetas.index') }}">
+          <i class="material-icons">notes</i>
+          <p>{{ __('Etiqueta de Documento') }}</p>
+        </a>
+      </li>
+      @endcan
+      @can('documento_index')
+      <li class="nav-item{{ $activePage == 'documentos' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('documentos.index') }}">
+          <i class="material-icons">receipt_long</i>
+            <p>{{ __('Documentos') }}</p>
+        </a>
+      </li>
+      @endcan
+      @can('explorador_index')
+      <li class="nav-item{{ $activePage == 'explorador' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('explorador.index') }}">
+          <i class="material-icons">manage_search</i>
+            <p>{{ __('Explorador') }}</p>
+        </a>
+      </li>
+      @endcan
+
+      {{-- herramientas --}}
+      <li class="nav-item {{ ($activePage == 'bitacora' || $activePage == 'backup') ? ' active' : '' }}">
+        <a class="nav-link" data-toggle="collapse" href="#showHerramientas" aria-expanded="false">
+          <i class="material-icons">settings</i>
+          <p>{{ __('Herramientas') }}
+            <b class="caret"></b>
+          </p>
+        </a>
+        <div class="collapse" id="showHerramientas">
+          <ul class="nav">
+            <li class="nav-item{{ $activePage == 'bitacora' ? ' active' : '' }}">
+              <a class="nav-link" href="{{ route('bitacora') }}">
+                <span class="sidebar-mini"> LOG </span>
+                <span class="sidebar-normal">{{ __('Bitácora') }} </span>
+              </a>
+            </li>
+            <li class="nav-item{{ $activePage == 'backup' ? ' active' : '' }}">
+              <a class="nav-link" href="#">
+                <span class="sidebar-mini"> BU </span>
+                <span class="sidebar-normal"> {{ __('Backup') }} </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      {{-- fin de herramientas --}}
     </ul>
   </div>
 </div>
