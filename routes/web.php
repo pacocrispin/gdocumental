@@ -28,10 +28,18 @@ Route::get('/users/{user}/edit', [App\Http\Controllers\UserController::class, 'e
 Route::put('/users/{user}', [App\Http\Controllers\UserController::class, 'update'])->name('users.update');
 Route::delete('/users/{user}', [App\Http\Controllers\UserController::class, 'destroy'])->name('users.delete');
 
+Route::get('/evento', [App\Http\Controllers\EventoController::class, 'index']);
+Route::post('/evento/agregar', [App\Http\Controllers\EventoController::class, 'store']);
+
 Route::resource('permissions', App\Http\Controllers\PermissionController::class);
 Route::resource('roles', App\Http\Controllers\RoleController::class);
 Route::resource('cargos', App\Http\Controllers\CargoController::class);
 Route::resource('departamentos', App\Http\Controllers\DepartamentoController::class);
 Route::resource('tipos', App\Http\Controllers\TipoController::class);
+Route::resource('trabajadores', App\Http\Controllers\TrabajadoreController::class);
+Route::resource('pacientes', App\Http\Controllers\PacienteController::class);
+Route::resource('aviso', App\Http\Controllers\AvisoController::class);
 
 });
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

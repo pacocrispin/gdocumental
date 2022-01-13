@@ -13,4 +13,10 @@ class Cargo extends Model
         'codigo',
         'nombre',
     ];
+
+
+    //Relacion uno a muchos
+    public function trabajadores(){
+        return $this->hasMany('App\Models\Trabajadore');
+    }
 }

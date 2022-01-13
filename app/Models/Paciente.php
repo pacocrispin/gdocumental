@@ -5,16 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Departamento extends Model
+class Paciente extends Model
 {
     use HasFactory;
-    
+
     protected $fillable = [
         'codigo',
+        'cedula',
         'nombre',
+        'direccion',
+        'telefono',
+        'celular',
     ];
-
-    public function trabajadores(){
-        return $this->hasMany('App\Models\Trabajadore');
-    }
 }

@@ -6,7 +6,7 @@
   -->
   <div class="logo">
     <a href="https://creative-tim.com/" class="simple-text logo-normal">
-      {{ __('Creative Tim') }}
+      {{ __('Gestion Documental') }}
     </a>
   </div>
   <div class="sidebar-wrapper">
@@ -14,30 +14,34 @@
       <li class="nav-item{{ $activePage == 'dashboard' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('home') }}">
           <i class="material-icons">dashboard</i>
-            <p>{{ __('Dashboard') }}</p>
+            <p>{{ __('Modulos') }}</p>
         </a>
       </li>
       <li class="nav-item {{ ($activePage == 'profile' || $activePage == 'user-management') ? ' active' : '' }}">
         <a class="nav-link" data-toggle="collapse" href="#laravelExample" aria-expanded="true">
           <i><img style="width:25px" src="{{ asset('img/laravel.svg') }}"></i>
-          <p>{{ __('Laravel Examples') }}
+          <p>{{ __('Administrativo') }}
             <b class="caret"></b>
           </p>
         </a>
         <div class="collapse show" id="laravelExample">
           <ul class="nav">
-            <li class="nav-item{{ $activePage == 'profile' ? ' active' : '' }}">
-              <a class="nav-link" href="#">
-                <span class="sidebar-mini"> UP </span>
-                <span class="sidebar-normal">{{ __('User profile') }} </span>
+            @can('cargo_index')
+            <li class="nav-item{{ $activePage == 'cargos' ? ' active' : '' }}">
+              <a class="nav-link" href="{{ route('cargos.index') }}">
+                <span class="sidebar-mini"> ADM </span>
+                <span class="sidebar-normal">{{ __('Cargo') }} </span>
               </a>
             </li>
-            <li class="nav-item{{ $activePage == 'user-management' ? ' active' : '' }}">
-              <a class="nav-link" href="#">
-                <span class="sidebar-mini"> UM </span>
-                <span class="sidebar-normal"> {{ __('User Management') }} </span>
+            @endcan
+            @can('departamento_index')
+            <li class="nav-item{{ $activePage == 'departamentos' ? ' active' : '' }}">
+              <a class="nav-link" href="{{ route('departamentos.index') }}">
+                <span class="sidebar-mini"> ADM </span>
+                <span class="sidebar-normal"> {{ __('Departamento') }} </span>
               </a>
             </li>
+            @endcan
           </ul>
         </div>
       </li>
@@ -65,19 +69,19 @@
         </a>
       </li>
       @endcan
-      @can('cargo_index')
-      <li class="nav-item{{ $activePage == 'cargos' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('cargos.index') }}">
-          <i class="material-icons">location_ons</i>
-            <p>{{ __('Cargos') }}</p>
+      @can('trabajadore_index')
+      <li class="nav-item{{ $activePage == 'trabajadores' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('trabajadores.index') }}">
+          <i class="material-icons">engineering</i>
+            <p>{{ __('Trabajadores') }}</p>
         </a>
       </li>
       @endcan
-      @can('departamento_index')
-      <li class="nav-item{{ $activePage == 'departamentos' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('departamentos.index') }}">
-          <i class="material-icons">notifications</i>
-          <p>{{ __('Departamento') }}</p>
+      @can('paciente_index')
+      <li class="nav-item{{ $activePage == 'pacientes' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('pacientes.index') }}">
+          <i class="material-icons">group</i>
+          <p>{{ __('Paciente') }}</p>
         </a>
       </li>
       @endcan
@@ -89,6 +93,24 @@
         </a>
       </li>
       @endcan
+      <li class="nav-item{{ $activePage == 'aviso' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('aviso.create') }}">
+          <i class="material-icons">language</i>
+          <p>{{ __('Aviso') }}</p>
+        </a>
+      </li>
+      <li class="nav-item">
+            <a class="nav-link" href="{{ route('logout') }}"
+               onclick="event.preventDefault();
+                             document.getElementById('logout-form').submit();">
+                <i class="nav-icon fas fa-blog"></i>             
+                Logout
+            </a>
+
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
+    </li>
     </ul>
   </div>
 </div>
