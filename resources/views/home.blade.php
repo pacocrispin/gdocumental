@@ -4,21 +4,21 @@
   <div class="content">
     <div class="container-fluid">
       <div class="row">
-        {{--<div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="col-lg-4 col-md-6 col-sm-6">
           <div class="card card-stats">
             <div class="card-header card-header-warning card-header-icon">
               <div class="card-icon">
                 <i class="material-icons">content_copy</i>
               </div>
-              <p class="card-category">Used Space</p>
-              <h3 class="card-title">49/50
-                <small>GB</small>
+              <p class="card-category">Cant. Documentos</p>
+              <h3 class="card-title">{{$documentos}}
+                <small>total</small>
               </h3>
             </div>
             <div class="card-footer">
               <div class="stats">
-                <i class="material-icons text-danger">warning</i>
-                <a href="#pablo">Get More Space...</a>
+                <i class="material-icons text-info">launch</i>
+                <a href="{{ route('documentos.index') }}">Ver Documentos...</a>
               </div>
             </div>
           </div>
@@ -27,19 +27,21 @@
           <div class="card card-stats">
             <div class="card-header card-header-success card-header-icon">
               <div class="card-icon">
-                <i class="material-icons">store</i>
+                <i class="material-icons">account_balance_wallet</i>
               </div>
-              <p class="card-category">Revenue</p>
-              <h3 class="card-title">$34,245</h3>
+              <p class="card-category">Bitácora</p>
+              <a href="{{ route('bitacora') }}">
+                <h4 class="card-title">Ver</h4>
+              </a>              
             </div>
             <div class="card-footer">
               <div class="stats">
-                <i class="material-icons">date_range</i> Last 24 Hours
+                <i class="material-icons">today</i> Hoy día
               </div>
             </div>
           </div>
         </div>
-        <div class="col-lg-3 col-md-6 col-sm-6">
+        {{-- <div class="col-lg-3 col-md-6 col-sm-6">
           <div class="card card-stats">
             <div class="card-header card-header-danger card-header-icon">
               <div class="card-icon">
@@ -70,7 +72,7 @@
               </div>
             </div>
           </div>
-        </div>--}}
+        </div> --}}
       </div>
       {{--<div class="row">
         <div class="col-md-4">
