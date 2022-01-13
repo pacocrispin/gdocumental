@@ -1,4 +1,4 @@
-<?php
+    <?php
 
 return [
 
@@ -166,6 +166,9 @@ return [
          * Package Service Providers...
          */
 
+        /* Paquete de Rap2hpoutre, funcion de visor de .log     */
+        Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
+        
         /*
          * Application Service Providers...
          */

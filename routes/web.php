@@ -18,6 +18,7 @@ Route::get('/', function () {
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index'])->name('bitacora');
 
 Route::group(['middleware' => 'auth'], function() {
 Route::get('/users/create', [App\Http\Controllers\UserController::class, 'create'])->name('users.create');
@@ -33,5 +34,12 @@ Route::resource('roles', App\Http\Controllers\RoleController::class);
 Route::resource('cargos', App\Http\Controllers\CargoController::class);
 Route::resource('departamentos', App\Http\Controllers\DepartamentoController::class);
 Route::resource('tipos', App\Http\Controllers\TipoController::class);
+
+Route::resource('carpetas', App\Http\Controllers\CarpetaController::class);
+Route::resource('documentos', App\Http\Controllers\DocumentoController::class);
+Route::resource('etiquetas', App\Http\Controllers\EtiquetaController::class);
+Route::resource('explorador', App\Http\Controllers\ExploradorController::class);
+Route::post('/documentos/upload', [App\Http\Controllers\DocumentoController::class, 'upload'])->name('documentos.upload');
+Route::get('/{uuid}/download', 'App\Http\Controllers\DownloadMediaController@download'); 
 
 });
