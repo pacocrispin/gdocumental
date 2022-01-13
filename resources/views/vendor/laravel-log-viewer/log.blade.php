@@ -10,6 +10,8 @@
   <title>Bitácora | Gestión Documentos</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css">
   <style>
     body {
@@ -185,6 +187,10 @@
         <div class="custom-control custom-switch" style="padding-bottom:20px;">
           <input type="checkbox" class="custom-control-input" id="darkSwitch">
           <label class="custom-control-label" for="darkSwitch" style="margin-top: 6px;">Modo Oscuro</label>
+        </div>
+        <div class="custom-switch">
+          
+          <a href="/home" class=""><p> <i class="material-icons">undo</i> Volver a la página principal</p></a>
         </div>
 
         <div class="list-group div-scroll">
