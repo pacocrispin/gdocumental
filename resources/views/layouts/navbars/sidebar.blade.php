@@ -103,6 +103,7 @@
       @endcan
 
       {{-- herramientas --}}
+      @can('bitacora')
       <li class="nav-item {{ ($activePage == 'bitacora' || $activePage == 'backup') ? ' active' : '' }}">
         <a class="nav-link" data-toggle="collapse" href="#showHerramientas" aria-expanded="false">
           <i class="material-icons">settings</i>
@@ -127,6 +128,7 @@
           </ul>
         </div>
       </li>
+      @endcan
       {{-- fin de herramientas --}}
     </ul>
   </div>
