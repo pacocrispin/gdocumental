@@ -47,7 +47,7 @@
                                                             <a href="{{ route('carpetas.edit', $carpeta->id) }}" class="btn btn-warning"><i class="material-icons">edit</i></a>
                                                             @endcan
                                                             @can('carpeta_destroy')
-                                                            <form action="{{ route('carpetas.destroy', $carpeta->id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('Seguro que desea eliminar Cargo?')">
+                                                            <form action="{{ route('carpetas.destroy', $carpeta->id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('Seguro que desea eliminar esta Carpeta?')">
                                                                 @csrf
                                                                 @method('DELETE')
                                                                 <button class="btn btn-danger" type="submit" rel="tooltip">

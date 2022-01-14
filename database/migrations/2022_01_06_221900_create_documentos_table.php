@@ -23,9 +23,9 @@ class CreateDocumentosTable extends Migration
             $table->string('uuid')->nullable();
             /*FK*/
             $table->unsignedBigInteger('creado_por_id');
-            $table->foreign('creado_por_id')->references('id')->on('users');
+            $table->foreign('creado_por_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('carpeta_id');
-            $table->foreign('carpeta_id')->references('id')->on('carpetas');
+            $table->foreign('carpeta_id')->references('id')->on('carpetas')->onDelete('cascade');
                    
         });
     }

@@ -1,4 +1,4 @@
-@extends('layouts.main',['activePage' => 'aviso','titlePage' => 'Todas las Notificaciones'])
+@extends('layouts.main',['activePage' => 'notificaciones','titlePage' => 'Todas las Notificaciones'])
 
 @section('content')
     <div class="content">

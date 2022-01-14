@@ -18,9 +18,9 @@ class CreateDetalleEtiquetasTable extends Migration
             $table->timestamps();
             //fk
             $table->unsignedBigInteger('etiqueta_id');
-            $table->foreign('etiqueta_id')->references('id')->on('etiquetas');
+            $table->foreign('etiqueta_id')->references('id')->on('etiquetas')->onDelete('cascade');
             $table->unsignedBigInteger('documento_id');
-            $table->foreign('documento_id')->references('id')->on('documentos');
+            $table->foreign('documento_id')->references('id')->on('documentos')->onDelete('cascade');
         });
     }
 
