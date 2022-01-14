@@ -120,9 +120,9 @@ class TrabajadoreController extends Controller
      */
     public function destroy(Trabajadore $trabajadore)
     {
-        abort_if(Gate::denies('trabajadore_delete'), 403);
+        abort_if(Gate::denies('trabajadore_destroy'), 403);
 
-        $mensaje = $cargo;
+        $mensaje = $trabajadore;
         $ip = request()->server();
         $datauser =auth()->user();
         Log::info( 'IP DEL CLIENTE:'. $ip['REMOTE_ADDR'] . ' CLIENTE: '. $datauser->name . ' DESDE NAVEGADOR:'.$ip['HTTP_USER_AGENT'] . ' DESCRIPCIÓN: Trabajador eliminado con id ' .$mensaje->id . ' ' . $mensaje->codigo . ' ' . $mensaje->nombre );

@@ -37,7 +37,7 @@
                     <td>{{ $trabajadore->cedula }}</td>
                     <td>{{ $trabajadore->nombre }}</td>
                     <td>
-                      <img src="/imagen/{{ $trabajadore->foto }}">
+                      <img class="avatar" width="20px" src="{{ asset('/image')}}/{{$trabajadore->foto}}">
                     </td>
                     <td>{{ $trabajadore->cargo->nombre}}</td>
                     <td>{{ $trabajadore->departamento->nombre}}</td>

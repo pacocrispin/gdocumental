@@ -52,7 +52,7 @@
                 <label for="telefono" class="col-sm-2 col-form-label">Teléfono</label>
                 <div class="col-sm-7">
                   <div class="form-group">
-                    <input type="number" maxlength="8" minlength="8" placeholder="7 0000000" class="form-control" name="telefono" autocomplete="off">
+                    <input type="tel" maxlength="8" minlength="8" placeholder="7 0000000" class="form-control" name="telefono" autocomplete="off">
                   </div>
                 </div>
               </div>
@@ -60,7 +60,7 @@
                 <label for="celular" class="col-sm-2 col-form-label">Celular</label>
                 <div class="col-sm-7">
                   <div class="form-group">
-                    <input type="number" maxlength="8" minlength="8" placeholder="3 3360000" class="form-control" name="celular" autocomplete="off">
+                    <input type="tel" maxlength="8" minlength="8" placeholder="3 3360000" class="form-control" name="celular" autocomplete="off">
                   </div>
                 </div>
               </div>

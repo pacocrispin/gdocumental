@@ -105,12 +105,12 @@
             <li class="nav-item{{ $activePage == 'aviso' ? ' active' : '' }}">
               <a class="nav-link" href="{{ route('aviso.create') }}">
                 <i class="material-icons">language</i>
-                <p>{{ __('Aviso') }}</p>
+                <p>{{ __('Crear aviso') }}</p>
               </a>
             </li>
-            <li class="nav-item{{ $activePage == 'aviso' ? ' active' : '' }}">
+            <li class="nav-item{{ $activePage == 'notificaciones' ? ' active' : '' }}">
               <a class="nav-link" href="{{ route('aviso.index') }}">
-                <i class="material-icons">manage_search</i>
+                <i class="material-icons">notifications</i>
                   <p>{{ __('Notificaciones') }}</p>
               </a>
             </li>
