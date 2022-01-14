@@ -26,12 +26,15 @@
                         <div class="block block-four"></div>
                         <a href="#">
                           <img class="avatar" src="{{ asset('/img/default-avatar.png') }}" alt="">
-                          <h5 class="title mt-3">Rol: {{ $role->name }}</h5>
+                          <h5 class="title mt-3">Descripción: Rol {{ $role->name }}</h5>
                         </a>
-                        <p class="description">
-                          {{ _('Ceo/Co-Founder') }} <br>
-                          {{ $role->guard_name }} <br>
-                          {{ $role->created_at }}
+                        <p class="card-text">
+                          <b>Tipo de rol: </b>
+                            {{ $role->guard_name }} <br>
+                          <b>Rol creado:</b>
+                            {{ $role->created_at }} <br>
+                          <b>Rol actualizado:</b>
+                            {{ $role->updated_at }} <br>
                         </p>
                       </div>
                     </p>
@@ -45,7 +48,7 @@
                   </div>
                   <div class="card-footer">
                     <div class="button-container">
-                      <button type="submit" class="btn btn-sm btn-primary">Editar</button>
+                      <a href="{{ route('roles.edit', $role->id) }}" class="btn btn-sm btn-primary">Editar</a>
                     </div>
                   </div>
                 </div>

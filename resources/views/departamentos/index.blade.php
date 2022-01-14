@@ -8,7 +8,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header card-header-primary">
-                                    <h4 class="card-title">Departamento</h4>
+                                    <h4 class="card-title">Departamentos</h4>
                                 </div>
                                 <div class="card-body">
                                     @if (session('success'))
@@ -27,7 +27,7 @@
                                         <table class="table">
                                             <thead class="text-primary">
                                                 <th>Id</th>
-                                                <th>Codigo</th>
+                                                <th>Código</th>
                                                 <th>Nombre</th>
                                                 <th class="text-right">Acciones</th>
                                             </thead>

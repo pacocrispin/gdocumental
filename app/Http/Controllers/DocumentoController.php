@@ -106,7 +106,9 @@ class DocumentoController extends Controller
         abort_if(Gate::denies('documento_show'), 403);
         $file = $documento->getFirstMedia();
         $file_name = $file->file_name;
-        return view('documentos.show', compact('documento', 'file','file_name'));
+        $creadorDocumento = User::find( $documento->creado_por_id)->first();
+        
+        return view('documentos.show', compact('documento', 'file','file_name','creadorDocumento'));
 
     }
 
