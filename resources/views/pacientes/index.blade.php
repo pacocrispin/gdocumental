@@ -39,8 +39,8 @@
                                                 @foreach ($pacientes as $paciente)
                                                     <tr>
                                                         <td>{{ $paciente->id }}</td>
-                                                        <td>{{ $paciente->celula }}</td>
                                                         <td>{{ $paciente->codigo }}</td>
+                                                        <td>{{ $paciente->cedula }}</td>
                                                         <td>{{ $paciente->nombre }}</td>
                                                         <td>{{ $paciente->direccion}}</td>
                                                         <td>{{ $paciente->telefono }}</td>

@@ -11,7 +11,7 @@
                 <i class="material-icons">content_copy</i>
               </div>
               <p class="card-category">Cant. Documentos</p>
-              <h3 class="card-title">{{$documentos}}
+              <h3 class="card-title">{{$cantidadDocumentos}}
                 <small>total</small>
               </h3>
             </div>
@@ -74,20 +74,32 @@
           </div>
         </div> --}}
       </div>
-      {{--<div class="row">
+
+      
+      <div class="row">
         <div class="col-md-4">
           <div class="card card-chart">
             <div class="card-header card-header-success">
               <div class="ct-chart" id="dailySalesChart"></div>
             </div>
             <div class="card-body">
-              <h4 class="card-title">Daily Sales</h4>
+              <h4 class="card-title">Módulo Usuarios</h4>
               <p class="card-category">
-                <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> increase in today sales.</p>
+                <span class="text-success"><i class="material-icons">content_paste</i></span>
+                <a href="{{ route('users.index')}}">Usuarios</a>
+              </p>
+              <p class="card-category">
+                <span class="text-success"><i class="material-icons">rule</i></span> 
+                <a href="{{ route('permissions.index')}}">Permisos</a>
+              </p>
+              <p class="card-category">
+                <span class="text-success"><i class="material-icons">library_books</i></span> 
+                <a href="{{ route('roles.index')}}">Roles</a>
+              </p>
             </div>
             <div class="card-footer">
               <div class="stats">
-                <i class="material-icons">access_time</i> updated 4 minutes ago
+                <i class="material-icons">access_time</i> Último usuario creado {{$ultimoUsuarioCreado->created_at}}
               </div>
             </div>
           </div>
@@ -98,12 +110,39 @@
               <div class="ct-chart" id="websiteViewsChart"></div>
             </div>
             <div class="card-body">
-              <h4 class="card-title">Email Subscriptions</h4>
-              <p class="card-category">Last Campaign Performance</p>
+              <h4 class="card-title">Módulo Documentos</h4>
+              <p class="card-category">
+                <span class="text-warning"><i class="material-icons">history_edu</i></span> 
+                <a href="{{ route('tipos.index')}}">Tipo de documento</a> 
+              </p>
+              <p class="card-category">
+                <span class="text-warning"><i class="material-icons">receipt_long</i></span> 
+                <a href="{{ route('documentos.index')}}">Documentos</a> 
+              </p>
+              <p class="card-category">
+                <span class="text-warning"><i class="material-icons">notes</i></span> 
+                <a href="{{ route('etiquetas.index')}}">Etiquetas</a> 
+              </p>
+              <p class="card-category">
+                <span class="text-warning"><i class="material-icons">folder</i></span> 
+                <a href="{{ route('carpetas.index')}}">Carpetas</a> 
+              </p>
+              <p class="card-category">
+                <span class="text-warning"><i class="material-icons">event</i></span> 
+                <a href="">Eventos - Agendas</a> 
+              </p>
+              <p class="card-category">
+                <span class="text-warning"><i class="material-icons">feedback</i></span> 
+                <a href="{{ route('aviso.index')}}">Avisos</a> 
+              </p>
+              <p class="card-category">
+                <span class="text-warning"><i class="material-icons">manage_search</i></span> 
+                <a href="{{ route('explorador.index')}}">Explorar documentos</a> 
+              </p>
             </div>
             <div class="card-footer">
               <div class="stats">
-                <i class="material-icons">access_time</i> campaign sent 2 days ago
+                <i class="material-icons">access_time</i> último documento subido {{$ultimoDocumentoCreado->created_at}}
               </div>
             </div>
           </div>
@@ -114,18 +153,34 @@
               <div class="ct-chart" id="completedTasksChart"></div>
             </div>
             <div class="card-body">
-              <h4 class="card-title">Completed Tasks</h4>
-              <p class="card-category">Last Campaign Performance</p>
+              <h4 class="card-title">Módulo Administración</h4>
+              <p class="card-category">
+                <span class="text-danger"><i class="material-icons">assignment_turned_in</i></span> 
+                <a href="{{ route('cargos.index')}}">Cargos</a> 
+              </p>
+              <p class="card-category">
+                <span class="text-danger"><i class="material-icons">apartment</i></span> 
+                <a href="{{ route('departamentos.index')}}">Departamentos</a> 
+              </p>
+              <p class="card-category">
+                <span class="text-danger"><i class="material-icons">engineering</i></span> 
+                <a href="{{ route('trabajadores.index')}}">Trabajadores</a> 
+              </p>
+              <p class="card-category">
+                <span class="text-danger"><i class="material-icons">group</i></span> 
+                <a href="{{ route('pacientes.index')}}">Pacientes</a> 
+              </p>
             </div>
             <div class="card-footer">
               <div class="stats">
-                <i class="material-icons">access_time</i> campaign sent 2 days ago
+                <i class="material-icons">access_time</i> último paciente creado {{$ultimoPacienteCreado->created_at}}
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="row">
+
+      {{-- <div class="row">
         <div class="col-lg-6 col-md-12">
           <div class="card">
             <div class="card-header card-header-tabs card-header-primary">
@@ -415,7 +470,7 @@
             </div>
           </div>
         </div>
-      </div>--}}
+      </div> --}}
     </div>
   </div>
 @endsection
