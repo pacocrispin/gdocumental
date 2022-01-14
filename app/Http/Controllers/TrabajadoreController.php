@@ -8,6 +8,7 @@ use App\Models\Trabajadore;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Log;
 
 class TrabajadoreController extends Controller
 {
@@ -58,7 +59,11 @@ class TrabajadoreController extends Controller
         Trabajadore::create($request->all()+[
             'foto' => $image_name,
         ]);
-
+        $mensaje = $request;
+        $ip = request()->server();
+        $datauser =auth()->user();
+        Log::info( 'IP DEL CLIENTE:'. $ip['REMOTE_ADDR'] . ' CLIENTE: '. $datauser->name . ' DESDE NAVEGADOR:'.$ip['HTTP_USER_AGENT'] . ' DESCRIPCIÓN: Trabajador creado: ' . $mensaje->codigo . ' ' . $mensaje->nombre );
+        
         return redirect()->route('trabajadores.index');
     }
 
@@ -90,7 +95,7 @@ class TrabajadoreController extends Controller
         $departamentos = Departamento::get();
         $users = User::get();
         // dd($role);
-        return view('trabajadores.edit', compact('trabajadore'));
+        return view('trabajadores.edit', compact('trabajadore','cargos','departamentos'));
     }
 
     /**
@@ -116,6 +121,11 @@ class TrabajadoreController extends Controller
     public function destroy(Trabajadore $trabajadore)
     {
         abort_if(Gate::denies('trabajadore_delete'), 403);
+
+        $mensaje = $cargo;
+        $ip = request()->server();
+        $datauser =auth()->user();
+        Log::info( 'IP DEL CLIENTE:'. $ip['REMOTE_ADDR'] . ' CLIENTE: '. $datauser->name . ' DESDE NAVEGADOR:'.$ip['HTTP_USER_AGENT'] . ' DESCRIPCIÓN: Trabajador eliminado con id ' .$mensaje->id . ' ' . $mensaje->codigo . ' ' . $mensaje->nombre );
         
         $trabajadore->delete();
         return redirect()->route('trabajadores.index');

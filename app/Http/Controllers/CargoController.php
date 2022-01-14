@@ -66,7 +66,7 @@ class CargoController extends Controller
         $mensaje = $cargo;
         $ip = request()->server();
         $datauser =auth()->user();
-        Log::info( 'IP DEL CLIENTE:'. $ip['REMOTE_ADDR'] . ' CLIENTE: '. $datauser->name . ' DESDE NAVEGADOR:'.$ip['HTTP_USER_AGENT'] . ' DESCRIPCIÓN: Cargo eliminado con id ' .$mensaje->id . ' ' . $mensaje->codigo . ' ' . $mensaje->name );
+        Log::info( 'IP DEL CLIENTE:'. $ip['REMOTE_ADDR'] . ' CLIENTE: '. $datauser->name . ' DESDE NAVEGADOR:'.$ip['HTTP_USER_AGENT'] . ' DESCRIPCIÓN: Cargo eliminado con id ' .$mensaje->id . ' ' . $mensaje->codigo . ' ' . $mensaje->nombre );
         
         $cargo->delete();
         return redirect()->route('cargos.index');

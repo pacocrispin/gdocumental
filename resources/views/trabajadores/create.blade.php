@@ -87,7 +87,8 @@
                     </select>
                   </div>
                 </div>
-              </div><div class="row">
+              </div>
+              <div class="row">
                 <label for="user_id" class="col-sm-2 col-form-label">Asignar Usuario</label>
                 <div class="col-sm-7">
                   <div class="form-group">

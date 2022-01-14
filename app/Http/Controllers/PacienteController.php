@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Paciente;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Log;
 
 class PacienteController extends Controller
 {
@@ -42,7 +43,11 @@ class PacienteController extends Controller
     public function store(Request $request)
     {
         Paciente::create($request->all());
-
+        $mensaje = $request;
+        $ip = request()->server();
+        $datauser =auth()->user();
+        Log::info( 'IP DEL CLIENTE:'. $ip['REMOTE_ADDR'] . ' CLIENTE: '. $datauser->name . ' DESDE NAVEGADOR:'.$ip['HTTP_USER_AGENT'] . ' DESCRIPCIÓN: Paciente creado: ' . $mensaje->codigo . ' ' . $mensaje->nombre );
+        
         return redirect()->route('pacientes.index');
     }
 
@@ -95,7 +100,11 @@ class PacienteController extends Controller
     public function destroy(Paciente $paciente)
     {
         abort_if(Gate::denies('paciente_destroy'), 403);
-
+        $mensaje = $cargo;
+        $ip = request()->server();
+        $datauser =auth()->user();
+        Log::info( 'IP DEL CLIENTE:'. $ip['REMOTE_ADDR'] . ' CLIENTE: '. $datauser->name . ' DESDE NAVEGADOR:'.$ip['HTTP_USER_AGENT'] . ' DESCRIPCIÓN: Paciente eliminado con id ' .$mensaje->id . ' ' . $mensaje->codigo . ' ' . $mensaje->nombre );
+        
         $paciente->delete();
 
         return redirect()->route('pacientes.index');

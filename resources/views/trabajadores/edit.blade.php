@@ -54,19 +54,43 @@
               <div class="row">
                 <label for="cargo_id" class="col-sm-2 col-form-label">Cargo</label>
                 <div class="col-sm-7">
-                  <input type="text" class="form-control" name="cargo_id" value="{{ old('cargo_id', $trabajadore->cargo->nombre) }}" autocomplete="off">
+                  <div class="form-group">
+                    <select name="cargo_id" class="custom-select">
+                      @foreach ($cargos as $cargo)
+                          <option value="{{$cargo->id}}"
+                            @if( $cargo->id === $trabajadore->cargo_id)
+                              selected
+                            @endif	
+                          >
+                            {{$cargo->nombre}}
+                          </option>
+                      @endforeach
+                    </select>
+                  </div>
                 </div>
               </div>
               <div class="row">
                 <label for="departamento_id" class="col-sm-2 col-form-label">Departamento</label>
                 <div class="col-sm-7">
-                  <input type="text" class="form-control" name="departamento_id" value="{{ old('departamento_id', $trabajadore->departamento->nombre) }}" autocomplete="off">
+                  <div class="form-group">
+                    <select name="departamento_id" class="custom-select">
+                      @foreach ($departamentos as $departamento)
+                          <option value="{{$departamento->id}}"
+                            @if( $departamento->id === $trabajadore->departamento_id)
+                              selected
+                            @endif
+                          >
+                            {{$departamento->nombre}}
+                          </option>
+                      @endforeach
+                    </select>
+                  </div>
                 </div>
               </div>
-              <div class="row">
+              <div class="row " hidden>
                 <label for="user_id" class="col-sm-2 col-form-label">Usuario</label>
                 <div class="col-sm-7">
-                  <input type="text" class="form-control" name="user_id" value="{{ old('user_id', $trabajadore->user_id) }}" autocomplete="off">
+                  <input type="text" class="form-control" name="user_id" value="{{ auth()->user()->id }}" autocomplete="off">
                 </div>
               </div>
               
