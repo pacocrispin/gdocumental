@@ -32,17 +32,35 @@
         <li class="nav-item dropdown">
           <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="material-icons">notifications</i>
-            <span class="notification">5</span>
-            <p class="d-lg-none d-md-block">
-              {{ __('Some Actions') }}
-            </p>
+            <span class="notification">
+              @if (count(auth()->user()->unreadNotifications))
+              <span >{{count(auth()->user()->unreadNotifications)}}</span>
+                
+              @endif
+            </span>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="#">{{ __('Mike John respondió a su correo electrónico') }}</a>
-            <a class="dropdown-item" href="#">{{ __('Tienes 5 tareas nuevas ') }}</a>
-            <a class="dropdown-item" href="#">{{ __('Subir el documento') }}</a>
-            <a class="dropdown-item" href="#">{{ __('Solicitud por aprobar') }}</a>
-            <a class="dropdown-item" href="#">{{ __('Documento en mora') }}</a>
+            <span class="dropdown-header">Notificaciones No Leidas</span>
+            @forelse (auth()->user()->unreadNotifications as $notification)
+            <a class="dropdown-item" href="#">
+              <i class="fa fa-envelope mr-2"></i> {{$notification->data['titulo']}}
+              <span class="ml-3 pull-right text-muted text-sm"> {{$notification->created_at->diffForHumans()}}</span>
+            </a>
+            @empty
+            <span class="dropdown-header"> Sin Notificaciones por leer</span>
+            @endforelse
+            <div class="dropdown-divider"></div>
+            <span class="dropdown-header">Notificaciones Leidas</span>
+            @forelse (auth()->user()->readNotifications as $notification)
+            <a class="dropdown-item" href="#">
+              <i class="fa fa-envelope mr-2"></i> {{$notification->data['descripcion']}}
+              <span class="ml-3 pull-right text-muted text-sm"> {{$notification->created_at->diffForHumans()}}</span>
+            </a>
+            @empty
+            <span class="dropdown-header"> Sin Notificaciones</span>
+            @endforelse
+            <div class="dropdown-divider"></div>
+            <a href="{{route('markAsRead')}}" class="dropdown-item dropdown-footer">Marcar todas como Leidas</a>
           </div>
         </li>
         <li class="nav-item dropdown">

@@ -108,6 +108,12 @@
                 <p>{{ __('Aviso') }}</p>
               </a>
             </li>
+            <li class="nav-item{{ $activePage == 'aviso' ? ' active' : '' }}">
+              <a class="nav-link" href="{{ route('aviso.index') }}">
+                <i class="material-icons">manage_search</i>
+                  <p>{{ __('Notificaciones') }}</p>
+              </a>
+            </li>
             @can('explorador_index')
             <li class="nav-item{{ $activePage == 'explorador' ? ' active' : '' }}">
               <a class="nav-link" href="{{ route('explorador.index') }}">
@@ -168,6 +174,7 @@
       </li>
       {{-- fin de ModuloAdministracion --}}
       
+
 
       {{-- herramientas --}}
       <li class="nav-item {{ ($activePage == 'bitacora' || $activePage == 'backup') ? ' active' : '' }}">

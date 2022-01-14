@@ -68,5 +68,6 @@
         <script src="{{ asset('demo/demo.js') }}"></script>
         <script src="{{ asset('js/settings.js') }}"></script>--}}
         @stack('js')
+        @yield('scripts')
     </body>
 </html>

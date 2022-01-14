@@ -40,6 +40,11 @@ Route::resource('tipos', App\Http\Controllers\TipoController::class);
 Route::resource('trabajadores', App\Http\Controllers\TrabajadoreController::class);
 Route::resource('pacientes', App\Http\Controllers\PacienteController::class);
 Route::resource('aviso', App\Http\Controllers\AvisoController::class);
+Route::get('markAsRead', function(){
+    auth()->user()->unreadNotifications->markAsRead();
+    return redirect()->back();
+})->name('markAsRead');
+Route::post('mark-as-read','AvisoController@markNotification')->name('markNotification');
 
 
 Route::resource('carpetas', App\Http\Controllers\CarpetaController::class);

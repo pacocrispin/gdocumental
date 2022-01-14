@@ -89,6 +89,8 @@ class PermissionSeeder extends Seeder
             'explorador_show',
             'explorador_edit',
             'explorador_destroy',
+            'documento_download',
+
         ];
 
         foreach ($permissions as $permission) {

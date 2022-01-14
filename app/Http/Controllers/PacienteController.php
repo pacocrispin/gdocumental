@@ -88,7 +88,7 @@ class PacienteController extends Controller
     {
         $paciente->update($request->all());
 
-        return redirect()->route('pacientes.index')->with('success', 'Paciente actualizado correctamente');
+        return redirect()->route('pacientes.index')->with('message', 'Paciente actualizado correctamente');
     }
 
     /**
