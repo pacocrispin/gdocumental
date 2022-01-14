@@ -17,10 +17,10 @@
             <!--Body-->
             <div class="card-body">
               <div class="row">
-                <label for="codigo" class="col-sm-2 col-form-label">Codigo</label>
+                <label for="codigo" class="col-sm-2 col-form-label">Código</label>
                 <div class="col-sm-7">
                   <div class="form-group">
-                    <input type="text" class="form-control" name="codigo" autocomplete="off" autofocus>
+                    <input type="text" class="form-control" placeholder="Trab000" name="codigo" autocomplete="off" autofocus>
                   </div>
                 </div>
               </div>
@@ -41,7 +41,7 @@
                 </div>
               </div>
               <div class="row">
-                <label for="direccion" class="col-sm-2 col-form-label">Direccion</label>
+                <label for="direccion" class="col-sm-2 col-form-label">Dirección</label>
                 <div class="col-sm-7">
                   <div class="form-group">
                     <input type="text" class="form-control" name="direccion" autocomplete="off">
@@ -49,10 +49,10 @@
                 </div>
               </div>
               <div class="row">
-                <label for="telefono" class="col-sm-2 col-form-label">Telefono</label>
+                <label for="telefono" class="col-sm-2 col-form-label">Teléfono</label>
                 <div class="col-sm-7">
                   <div class="form-group">
-                    <input type="text" class="form-control" name="telefono" autocomplete="off">
+                    <input type="number" maxlength="8" minlength="8" placeholder="7 0000000" class="form-control" name="telefono" autocomplete="off">
                   </div>
                 </div>
               </div>
@@ -60,7 +60,7 @@
                 <label for="celular" class="col-sm-2 col-form-label">Celular</label>
                 <div class="col-sm-7">
                   <div class="form-group">
-                    <input type="text" class="form-control" name="celular" autocomplete="off">
+                    <input type="number" maxlength="8" minlength="8" placeholder="3 3360000" class="form-control" name="celular" autocomplete="off">
                   </div>
                 </div>
               </div>
@@ -102,7 +102,7 @@
               <!--para ver la foto seleccionada-->
               
               <div class="row">
-                <div class="col-sm-7">
+                <div class="col-sm-3">
                   <div class="custom-file">
                     <input type="file" class="custom-file-input" name="picture" id="picture">
                     <label class="custom-file-label" for="foto">Seleccionar Foto</label>

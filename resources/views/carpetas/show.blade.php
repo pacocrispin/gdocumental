@@ -27,20 +27,26 @@
                                                         <h5 class="title mx-3">{{ $carpeta->nombre }}</h5>
                                                     </a>
                                                     <p class="description">
-                                                        {{ $carpeta->nombre }} <br>
-                                                        {{ $carpeta->estado }} <br>
-                                                        {{ $carpeta->created_at }} <br>
+                                                        <b>Descripción:</b> {{ $carpeta->nombre }} <br>
                                                     </p>
                                                 </div>
                                             </p>
-                                            <div class="card-description">
-                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur earum excepturi omnis minima deserunt numquam, doloremque totam quasi nam, assumenda quas facere, ad itaque? Doloremque doloribus quae voluptas cumque qui.
+                                            <div class="card-text">
+                                                <p class="text-center mb-1"><u>Datos:</u></p>
+                                                <b>Nombre de la carpeta: </b> 
+                                                    {{ $carpeta->nombre }} <br>
+                                                <b>Estado:</b> 
+                                                    {{ $carpeta->estado }} <br>
+                                                <b>Fecha creación: </b>
+                                                    {{ $carpeta->created_at }} <br>
+                                                <b>Fecha actualización: </b>
+                                                    {{ $carpeta->updated_at }} <br>
                                             </div>
                                         </div>
                                         <div class="card-footer">
                                             <div class="button-container">
                                                 <a href="{{ route('carpetas.index') }}" class="btn btn-sm btn-success mr-3">Volver</a>
-                                                <a href="#" class="btn btn-sm btn-primary">Editar</a>
+                                                <a href="{{ route('carpetas.edit', $carpeta->id) }}" class="btn btn-sm btn-primary">Editar</a>
                                             </div>
                                         </div>
                                     </div>

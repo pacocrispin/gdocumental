@@ -48,9 +48,9 @@
                                 <div class="row">
                                     <label for="numero" class="col-sm-2 col-form-label">Número del documento</label>
                                     <div class="col-sm-7">
-                                        <input type="text" class="form-control" name="numero" placeholder="Ingrese el Numero del Documento" value="{{old('numero')}}">
+                                        <input type="number" class="form-control" name="numero" pattern="^[0-9]+" min="1" placeholder="Ingrese el Número del Documento" value="{{old('numero')}}">
                                         @if ($errors->has('numero'))
-                                            <span class="error text-danger" for="input-numero">{{ $errors->first('numero') }}</span>
+                                            <span class="error text-danger" for="input-numero" >{{ $errors->first('numero') }}</span>
                                         @endif
                                     </div>
                                 </div>

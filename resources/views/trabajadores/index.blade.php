@@ -21,7 +21,7 @@
               <table class="table ">
                 <thead class="text-primary">
                   <th> ID </th>
-                  <th> Codigo </th>
+                  <th> Código </th>
                   <th> Cedula </th>
                   <th> Nombre </th>
                   <th> Foto </th>

@@ -6,8 +6,8 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header card-header-primary">
-                            <div class="card-title">Carpeta</div>
-                            <p class="card-category">Vista detallada de la Carpeta: {{ $carpeta->nombre }}</p>
+                            <div class="card-title">Carpeta: {{ $carpeta->nombre }} </div>
+                            <p class="card-category">Vista detallada de los documentos dentro de {{ $carpeta->nombre }}</p>
                         </div>
                         <!--body-->
                         <div class="card-body">
