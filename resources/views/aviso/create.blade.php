@@ -12,6 +12,11 @@
                                 <h4 class="card-title">Aviso</h4>
                             </div>
                             <div class="card-body">
+                                @if (session('message'))
+                                <div class="alert alert-success" role="message">
+                                    {{ session('message') }}
+                                </div>
+                                @endif
                                 {{--@if ($errors->any())
                                     <div class="alert alert-danger">
                                         <ul>

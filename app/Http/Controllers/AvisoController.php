@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\AvisoEvent;
 use App\Models\Aviso;
+use App\Models\User;
+use App\Notifications\AvisoNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,7 +18,8 @@ class AvisoController extends Controller
      */
     public function index()
     {
-        //
+        $avisoNotifications = auth()->user()->unreadNotifications;
+        return view('aviso.notifications', compact('avisoNotifications'));
     }
 
     /**
@@ -39,6 +43,10 @@ class AvisoController extends Controller
         $data = $request->all();
         $data['user_id'] = Auth::id();
         $aviso = Aviso::create($data);
+
+        event(new AvisoEvent($aviso));
+
+        return redirect()->back()->with('message', 'Aviso creado correctamente');
     }
 
     /**
@@ -84,5 +92,14 @@ class AvisoController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function markNotification(Request $request)
+    {
+        auth()->user()->unreadNotifications
+                      ->when($request->input('id'), function($query) use ($request){
+                          return $query->where('id',$request->input('id'));
+                      })->markAsRead();
+        return response()->noContent();
     }
 }

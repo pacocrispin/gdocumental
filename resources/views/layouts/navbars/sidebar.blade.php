@@ -91,18 +91,12 @@
           <p>{{ __('Aviso') }}</p>
         </a>
       </li>
-      <li class="nav-item">
-            <a class="nav-link" href="{{ route('logout') }}"
-               onclick="event.preventDefault();
-                             document.getElementById('logout-form').submit();">
-                <i class="nav-icon fas fa-blog"></i>             
-                Logout
-            </a>
-
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                @csrf
-            </form>
-    </li>
+      <li class="nav-item{{ $activePage == 'aviso' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('aviso.index') }}">
+          <i class="material-icons">manage_search</i>
+            <p>{{ __('Notificaciones') }}</p>
+        </a>
+      </li>
       @can('carpeta_index')
       <li class="nav-item{{ $activePage == 'carpetas' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('carpetas.index') }}">
@@ -135,6 +129,7 @@
         </a>
       </li>
       @endcan
+
 
       {{-- herramientas --}}
       <li class="nav-item {{ ($activePage == 'bitacora' || $activePage == 'backup') ? ' active' : '' }}">
