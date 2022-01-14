@@ -24,23 +24,31 @@
                                                 <div class="author">
                                                     <a href="#" class="d-flex">
                                                         <img src="{{ asset('/img/default-avatar.png') }}" alt="image" class="avatar">
-                                                        <h5 class="title mx-3">{{ $cargo->nombre }}</h5>
+                                                        <h5 class="title mx-3">
+                                                            {{ $cargo->nombre }}
+                                                        </h5>
                                                     </a>
                                                     <p class="description">
-                                                        {{ $cargo->codigo }} <br>
-                                                        {{ $cargo->nombre }} <br>
-                                                        {{ $cargo->created_at }} <br>
+                                                        <b>Descripción:</b> {{ $cargo->nombre }} <br>
                                                     </p>
                                                 </div>
                                             </p>
-                                            <div class="card-description">
-                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur earum excepturi omnis minima deserunt numquam, doloremque totam quasi nam, assumenda quas facere, ad itaque? Doloremque doloribus quae voluptas cumque qui.
+                                            <div class="card-text">
+                                                <p class="text-center mb-1"><u>Datos:</u></p>
+                                                <b>Código: </b> 
+                                                    {{ $cargo->codigo }} <br>
+                                                <b>Cargo:</b> 
+                                                    {{ $cargo->nombre }} <br>
+                                                <b>Fecha creación: </b>
+                                                    {{ $cargo->created_at }} <br>
+                                                <b>Fecha actualización: </b>
+                                                    {{ $cargo->updated_at }} <br>
                                             </div>
                                         </div>
                                         <div class="card-footer">
                                             <div class="button-container">
                                                 <a href="{{ route('cargos.index') }}" class="btn btn-sm btn-success mr-3">Volver</a>
-                                                <a href="#" class="btn btn-sm btn-primary">Editar</a>
+                                                <a href="{{ route('cargos.edit', $cargo->id) }}" class="btn btn-sm btn-primary">Editar</a>
                                             </div>
                                         </div>
                                     </div>

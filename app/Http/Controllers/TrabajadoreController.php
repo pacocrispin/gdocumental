@@ -71,8 +71,9 @@ class TrabajadoreController extends Controller
     public function show(Trabajadore $trabajadore)
     {
         abort_if(Gate::denies('trabajadore_show'), 403);
+        $departamento = Departamento::find($trabajadore->departamento_id)->first();
 
-        return view('trabajadores.show', compact('trabajadore'));
+        return view('trabajadores.show', compact('trabajadore','departamento'));
     }
 
     /**

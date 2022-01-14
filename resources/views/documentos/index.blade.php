@@ -27,9 +27,9 @@
                                         <table class="table">
                                             <thead class="text-primary">
                                                 <th>Id</th>
-                                                <th>Nombre</th>
+                                                <th>Nombre Documento</th>
                                                 <th>Estado</th>
-                                                <th>Numero</th>
+                                                <th>Nro. Documento</th>
                                                 <th>Carpeta</th>
                                                 
                                                 <th>Creador</th> 

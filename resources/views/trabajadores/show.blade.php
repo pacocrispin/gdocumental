@@ -8,7 +8,7 @@
           <!--Header-->
           <div class="card-header card-header-primary">
             <h4 class="card-title">Trabajadores</h4>
-            <p class="card-category">Vista detallada del trabajador: {{ $trabajador->nombre }}</p>
+            <p class="card-category">Vista detallada del trabajador: {{ $trabajadore->nombre }}</p>
           </div>
           <!--End header-->
           <!--Body-->
@@ -25,30 +25,36 @@
                         <div class="block block-three"></div>
                         <div class="block block-four"></div>
                         <a href="#">
-                          <img class="avatar" src="{{ asset('/img/default-avatar.png') }}" alt="">
-                          <h5 class="title mt-3">Trabajador: {{ $trabajador->nombre }}</h5>
+                          <img class="img-thumbnail" src="{{ asset('/image')}}/{{$trabajadore->foto}}" alt="">
                         </a>
-                        <p class="description">
-                          {{ _('Ceo/Co-Founder') }} <br>
-                          {{ $trabajador->codigo }} <br>
-                          {{ $trabajador->cedula }} <br>
-                          {{ $trabajador->nombre }} <br>
-                          {{ $trabajador->direccion }} <br>
-                          {{ $trabajador->created_at }}
-                        </p>
                       </div>
                     </p>
+                    <div class="card-text">
+                        <p class="text-center mb-1"><u>Datos:</u></p>
+                        <b>Código: </b> 
+                            {{ $trabajadore->codigo }} <br>
+                        <b>Cedula:</b> 
+                            {{ $trabajadore->cedula }} <br>
+                        <b>Nombre Completo: </b> 
+                            {{ $trabajadore->nombre }} <br>
+                        <b>Dirección:</b> 
+                            {{ $trabajadore->direccion }} <br>
+                        <b>Fecha creación: </b>
+                            {{ $trabajadore->created_at }} <br>
+                        <b>Fecha actualización: </b>
+                            {{ $trabajadore->updated_at }} <br>
+                    </div>
                     <div class="card-description">
-                      @forelse ($trabajador->departamentos as $departamento)
+                      @if ($departamento)
                           <span class="badge rounded-pill bg-dark text-white">{{ $departamento->nombre }}</span>
-                      @empty
+                      @else
                           <span class="badge badge-danger bg-danger">Departamento sin Elegir</span>
-                      @endforelse
+                      @endif
                     </div>
                   </div>
                   <div class="card-footer">
                     <div class="button-container">
-                      <button type="submit" class="btn btn-sm btn-primary">Editar</button>
+                      <a href="{{ route('trabajadores.edit', $trabajadore->id) }}" class="btn btn-sm btn-primary">Editar</a>
                     </div>
                   </div>
                 </div>

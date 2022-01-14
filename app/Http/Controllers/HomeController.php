@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Documento;
+use App\Models\User;
+use App\Models\Paciente;
 
 class HomeController extends Controller
 {
@@ -24,7 +26,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $documentos = Documento::count();
-        return view('home', compact('documentos'));
+        $cantidadDocumentos = Documento::count();
+        $ultimoUsuarioCreado = User::all()->last();
+        $ultimoDocumentoCreado = Documento::all()->last();
+        $ultimoPacienteCreado = Paciente::all()->last();
+    
+
+        return view('home', compact('cantidadDocumentos','ultimoUsuarioCreado','ultimoDocumentoCreado','ultimoPacienteCreado'));
     }
 }

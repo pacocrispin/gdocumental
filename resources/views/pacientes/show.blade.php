@@ -26,25 +26,32 @@
                                                         <img src="{{ asset('/img/default-avatar.png') }}" alt="image" class="avatar">
                                                         <h5 class="title mx-3">{{ $paciente->nombre }}</h5>
                                                     </a>
-                                                    <p class="description">
-                                                        {{ $paciente->codigo }} <br>
-                                                        {{ $paciente->cedula }} <br>
-                                                        {{ $paciente->nombre }} <br>
-                                                        {{ $paciente->direccion }} <br>
-                                                        {{ $paciente->telefono }} <br>
-                                                        {{ $paciente->celular }} <br>
-                                                        {{ $paciente->created_at }} <br>
-                                                    </p>
                                                 </div>
                                             </p>
-                                            <div class="card-description">
-                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur earum excepturi omnis minima deserunt numquam, doloremque totam quasi nam, assumenda quas facere, ad itaque? Doloremque doloribus quae voluptas cumque qui.
+                                            <div class="card-text">
+                                                <p class="text-center mb-1"><u>Datos:</u></p>
+                                                <b>Código: </b> 
+                                                    {{ $paciente->codigo }} <br>
+                                                <b>Cedula:</b> 
+                                                    {{ $paciente->cedula }} <br>
+                                                <b>Nombre del paciente: </b> 
+                                                    {{ $paciente->nombre }} <br>
+                                                <b>Dirección:</b> 
+                                                    {{ $paciente->direccion }} <br>
+                                                <b>Teléfono:</b> 
+                                                    {{ $paciente->telefono }} <br>
+                                                <b>Celular:</b> 
+                                                    {{ $paciente->celular }} <br>
+                                                <b>Fecha creación: </b>
+                                                    {{ $paciente->created_at }} <br>
+                                                <b>Fecha actualización: </b>
+                                                    {{ $paciente->updated_at }} <br>
                                             </div>
                                         </div>
                                         <div class="card-footer">
                                             <div class="button-container">
                                                 <a href="{{ route('pacientes.index') }}" class="btn btn-sm btn-success mr-3">Volver</a>
-                                                <a href="#" class="btn btn-sm btn-primary">Editar</a>
+                                                <a href="{{ route('pacientes.edit', $paciente->id) }}" class="btn btn-sm btn-primary">Editar</a>
                                             </div>
                                         </div>
                                     </div>

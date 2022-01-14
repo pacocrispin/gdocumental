@@ -24,22 +24,26 @@
                                                 <div class="author">
                                                     <a href="#" class="d-flex">
                                                         <img src="{{ asset('/img/default-avatar.png') }}" alt="image" class="avatar">
-                                                        <h5 class="title mx-3">{{ $tipo->id }}</h5>
+                                                        <h5 class="title mx-3">Descripción: {{ $tipo->descripcion }}</h5>
                                                     </a>
-                                                    <p class="description">
-                                                        {{ $tipo->descripcion }} <br>
-                                                        {{ $tipo->created_at }} <br>
-                                                    </p>
                                                 </div>
                                             </p>
-                                            <div class="card-description">
-                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur earum excepturi omnis minima deserunt numquam, doloremque totam quasi nam, assumenda quas facere, ad itaque? Doloremque doloribus quae voluptas cumque qui.
+                                            <div class="card-text">
+                                                <p class="text-center mb-1"><u>Datos:</u></p>
+                                                <b>Identificador: </b> 
+                                                    {{ $tipo->id }} <br>
+                                                <b>Tipo de documento:</b> 
+                                                    {{ $tipo->descripcion }} <br>
+                                                <b>Fecha creación: </b>
+                                                    {{ $tipo->created_at }} <br>
+                                                <b>Fecha actualización: </b>
+                                                    {{ $tipo->updated_at }} <br>
                                             </div>
                                         </div>
                                         <div class="card-footer">
                                             <div class="button-container">
                                                 <a href="{{ route('tipos.index') }}" class="btn btn-sm btn-success mr-3">Volver</a>
-                                                <a href="#" class="btn btn-sm btn-primary">Editar</a>
+                                                <a href="{{ route('tipos.edit', $tipo->id) }}" class="btn btn-sm btn-primary">Editar</a>
                                             </div>
                                         </div>
                                     </div>

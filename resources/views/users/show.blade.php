@@ -26,28 +26,34 @@
                                                         <img src="{{ asset('/img/default-avatar.png') }}" alt="image" class="avatar">
                                                         <h5 class="title mx-3">{{ $user->name }}</h5>
                                                     </a>
-                                                    <p class="description">
-                                                        {{ $user->username }} <br>
-                                                        {{ $user->email }} <br>
-                                                        {{ $user->created_at }} <br>
-                                                        <td>
-                                                          @forelse ($user->roles as $role)
-                                                            <span class="badge rounded-pill bg-dark text-white">{{ $role->name }}</span>
-                                                          @empty
-                                                            <span class="badge badge-danger bg-danger">Sin roles</span>
-                                                          @endforelse
-                                                        </td>
-                                                    </p>
                                                 </div>
                                             </p>
-                                            <div class="card-description">
-                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur earum excepturi omnis minima deserunt numquam, doloremque totam quasi nam, assumenda quas facere, ad itaque? Doloremque doloribus quae voluptas cumque qui.
+                                            <div class="card-text">
+                                                <p class="text-center mb-1"><u>Datos:</u></p>
+                                                <b>ID user: </b> 
+                                                    {{ $user->id }} <br>
+                                                <b>Nombre:</b> 
+                                                    {{ $user->name }} <br>
+                                                <b>Email:</b> 
+                                                    {{ $user->email }} <br>
+                                                <b>Fecha creación: </b>
+                                                    {{ $user->created_at }} <br>
+                                                <b>Fecha actualización: </b>
+                                                    {{ $user->updated_at }} <br>
+                                                <b>Roles activos:</b>
+                                                <td>                                                    
+                                                    @forelse ($user->roles as $role)
+                                                        <span class="badge rounded-pill bg-info text-white">{{ $role->name }}</span>
+                                                    @empty
+                                                        <span class="badge badge-danger bg-danger">Sin roles</span>
+                                                    @endforelse
+                                                </td>
                                             </div>
                                         </div>
                                         <div class="card-footer">
                                             <div class="button-container">
                                                 <a href="{{ route('users.index') }}" class="btn btn-sm btn-success mr-3">Volver</a>
-                                                <button class="btn btn-sm btn-primary">Editar</button>
+                                                <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-primary mr-3">Editar</a>
                                             </div>
                                         </div>
                                     </div>
