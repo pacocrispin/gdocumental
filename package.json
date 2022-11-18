@@ -17,15 +17,10 @@
         "lodash": "^4.17.21",
         "postcss": "^8.4.5",
         "resolve-url-loader": "^4.0.0",
-<<<<<<< HEAD
         "sass": "^1.32.11",
         "sass-loader": "^11.0.1"
     },
     "dependencies": {
         "fullcalendar": "^5.10.1"
-=======
-        "sass": "^1.46.0",
-        "sass-loader": "^12.4.0"
->>>>>>> 9d6f53733ea31d35f3968a8a737e65bbe067b02b
     }
 }
